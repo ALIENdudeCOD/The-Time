@@ -1,4 +1,4 @@
-# chronoterm
+# The Time
 
 A minimal terminal-inspired clock: just the current local time on a dark background.
 
