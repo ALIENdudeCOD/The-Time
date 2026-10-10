@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark light">
+  <title>chronoterm</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-theme="black">
+  <main class="clock" aria-label="Current local time">
+    <time id="time">00:00:00</time>
+  </main>
+
+  <button class="settings-toggle" id="settingsToggle" type="button"
+          aria-label="Open clock settings" aria-expanded="false" title="Settings">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Z"/><path d="m19.4 15 .1.1 1.4 1.1-1.4 2.4-1.7-.7a8 8 0 0 1-1.5.9l-.3 1.8h-2.8l-.3-1.8a8 8 0 0 1-1.5-.9l-1.7.7-1.4-2.4 1.4-1.1a7 7 0 0 1 0-1.8l-1.4-1.1 1.4-2.4 1.7.7a8 8 0 0 1 1.5-.9l.3-1.8h2.8l.3 1.8a8 8 0 0 1 1.5.9l1.7-.7 1.4 2.4-1.4 1.1a7 7 0 0 1 0 1.8Z" transform="translate(-2 -2) scale(1.12)"/></svg>
+  </button>
+
+  <aside class="settings" id="settingsPanel" aria-label="Clock settings" hidden>
+    <header class="settings-header">
+      <div><p class="eyebrow">CHRONOTERM / CONFIG</p><h1>Appearance</h1></div>
+      <button class="close-button" id="closeSettings" type="button" aria-label="Close settings">×</button>
+    </header>
+
+    <section class="setting-group">
+      <label for="themeSelect">Theme</label>
+      <p class="hint">Choose the overall background and interface style.</p>
+      <select id="themeSelect">
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+        <option value="black">Black / OLED</option>
+      </select>
+    </section>
+
+    <section class="setting-group">
+      <div class="range-heading">
+        <label for="sizeRange">Clock font size</label>
+        <output id="sizeValue" for="sizeRange">Responsive</output>
+      </div>
+      <p class="hint">Adjust the size of the time display.</p>
+      <input id="sizeRange" class="size-range" type="range" min="40" max="240" step="4" value="100">
+      <div class="range-ends"><span>Small</span><span>Large</span></div>
+    </section>
+
+    <section class="setting-group">
+      <label for="fontSelect">Clock font</label>
+      <p class="hint">Choose how the digits look.</p>
+      <select id="fontSelect">
+        <option value="mono">Monospace</option>
+        <option value="terminal">Terminal</option>
+        <option value="sans">Sans serif</option>
+        <option value="serif">Serif</option>
+        <option value="rounded">Rounded</option>
+      </select>
+      <div class="font-preview" id="fontPreview">12:34:56</div>
+    </section>
+
+
+    <section class="setting-group">
+      <label for="colorPicker">Custom time color</label>
+      <p class="hint">Pick any color for the clock digits.</p>
+      <div class="color-row">
+        <input id="colorPicker" type="color" value="#8bd49c" aria-label="Custom time color">
+        <input id="colorHex" type="text" value="#8BD49C" maxlength="7" spellcheck="false" aria-label="Hex color value">
+      </div>
+      <div class="swatches" aria-label="Suggested colors">
+        <button type="button" class="swatch" data-color="#8bd49c" style="--swatch:#8bd49c" aria-label="Terminal green" title="Terminal green"></button>
+        <button type="button" class="swatch" data-color="#80c7ff" style="--swatch:#80c7ff" aria-label="Sky blue" title="Sky blue"></button>
+        <button type="button" class="swatch" data-color="#c6a0f6" style="--swatch:#c6a0f6" aria-label="Lavender" title="Lavender"></button>
+        <button type="button" class="swatch" data-color="#f5a97f" style="--swatch:#f5a97f" aria-label="Peach" title="Peach"></button>
+        <button type="button" class="swatch" data-color="#f5e0dc" style="--swatch:#f5e0dc" aria-label="Warm white" title="Warm white"></button>
+      </div>
+    </section>
+
+    <section class="setting-group compact">
+      <label for="formatSelect">Time format</label>
+      <select id="formatSelect">
+        <option value="24">24-hour</option>
+        <option value="12">12-hour</option>
+      </select>
+    </section>
+    <section class="setting-group compact toggle-row">
+      <label for="secondsToggle">Show seconds</label>
+      <input id="secondsToggle" type="checkbox" checked>
+    </section>
+    <section class="setting-group compact toggle-row">
+      <label for="millisecondsToggle">Show milliseconds</label>
+      <input id="millisecondsToggle" type="checkbox">
+    </section>
+    <footer class="settings-footer">
+      <button class="reset-button" id="resetSettings" type="button">Reset defaults</button>
+      <span>Saved on this device</span>
+    </footer>
+  </aside>
+
+  <script src="script.js"></script>
+</body>
+</html>
